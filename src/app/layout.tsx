@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='ko'>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <StyledComponentRegistry>{children}</StyledComponentRegistry>
       </body>
     </html>

@@ -2,8 +2,13 @@
 
 import { useServerInsertedHTML } from 'next/navigation';
 import React, { useState } from 'react';
-import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
+import {
+  ServerStyleSheet,
+  StyleSheetManager,
+  ThemeProvider,
+} from 'styled-components';
 import { GlobalStyle } from './global-styles';
+import { theme } from '../themes';
 
 export const Registry = ({ children }: { children: React.ReactNode }) => {
   const [sheet] = useState(() => new ServerStyleSheet());
@@ -15,13 +20,22 @@ export const Registry = ({ children }: { children: React.ReactNode }) => {
   });
 
   if (typeof document !== 'undefined') {
-    return <>{children}</>;
+    return (
+      <StyleSheetManager sheet={sheet.instance}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          {children}
+        </ThemeProvider>
+      </StyleSheetManager>
+    );
   }
 
   return (
     <StyleSheetManager sheet={sheet.instance}>
-      <GlobalStyle />
-      {children}
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        {children}
+      </ThemeProvider>
     </StyleSheetManager>
   );
 };
