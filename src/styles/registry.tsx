@@ -8,7 +8,7 @@ import {
   ThemeProvider,
 } from 'styled-components';
 import { GlobalStyle } from './global-styles';
-import { theme } from '../themes';
+import { theme } from '@/themes';
 
 export const Registry = ({ children }: { children: React.ReactNode }) => {
   const [sheet] = useState(() => new ServerStyleSheet());

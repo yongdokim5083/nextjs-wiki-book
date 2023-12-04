@@ -56,7 +56,7 @@ const Page: NextPage = () => {
       <div>
         <StyledLink href='/'>요기를 클릭해주세요.</StyledLink>
       </div>
-      <Text>리우똥꼬를 클릭하세요.</Text>
+      <Text>안녕하세요</Text>
     </div>
   );
 };
